@@ -13,3 +13,6 @@ CMakeUserPresets.json
 
 # clang cache
 .cache
+
+# build directories
+Build/
