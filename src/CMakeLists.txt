@@ -4,7 +4,8 @@
 
 # application sources
 set(UKPM_SOURCES
-    core/stub.cc
+    package/binary_package.cc
+    package/source_package.cc
 )
 
 add_library(libukpm OBJECT ${UKPM_SOURCES})
