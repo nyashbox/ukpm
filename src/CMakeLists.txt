@@ -8,12 +8,20 @@ set(UKPM_SOURCES
     package/source_package.cc
 )
 
+find_package(LibArchive REQUIRED)
+
 add_library(libukpm OBJECT ${UKPM_SOURCES})
 add_library(ukpm::ukpm ALIAS libukpm)
+
+target_link_libraries(libukpm 
+    PUBLIC
+        LibArchive::LibArchive 
+)
 
 target_include_directories(libukpm
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
-add_executable(ukpm ukpm.cc $<TARGET_OBJECTS:ukpm::ukpm>)
+add_executable(ukpm ukpm.cc)
+target_link_libraries(ukpm PUBLIC ukpm::ukpm)
