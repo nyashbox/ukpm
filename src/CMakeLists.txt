@@ -4,6 +4,8 @@
 
 # application sources
 set(UKPM_SOURCES
+    core/archive.cc
+
     package/binary_package.cc
     package/source_package.cc
 )
