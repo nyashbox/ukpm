@@ -27,4 +27,6 @@ target_link_libraries(ukpm_testrunner
 )
 
 # discover tests
-gtest_discover_tests(ukpm_testrunner)
+gtest_discover_tests(ukpm_testrunner
+    WORKING_DIRECTORY
+        ${CMAKE_CURRENT_LIST_DIR})
