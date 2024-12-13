@@ -11,6 +11,7 @@ set(UKPM_SOURCES
 )
 
 find_package(LibArchive REQUIRED)
+find_package(nlohmann_json_schema_validator REQUIRED)
 
 add_library(libukpm OBJECT ${UKPM_SOURCES})
 add_library(ukpm::ukpm ALIAS libukpm)
@@ -18,6 +19,8 @@ add_library(ukpm::ukpm ALIAS libukpm)
 target_link_libraries(libukpm 
     PUBLIC
         LibArchive::LibArchive 
+        nlohmann_json::nlohmann_json
+        nlohmann_json_schema_validator
 )
 
 target_include_directories(libukpm
