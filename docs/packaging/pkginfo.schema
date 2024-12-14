@@ -5,7 +5,7 @@
     "properties": {
         "syntax": {
             "type": "string",
-			"enum": ["1"]
+	    "enum": ["1"]
         },
         "manifest": {
             "type": "object",
@@ -24,14 +24,14 @@
                             "maintainer": { "type": "string" },
                             "mail": {
                                 "type": "string",
-								"format": "email"
+                                "format": "email"
                             }
                         }
                     }
                 },
                 "homepage": {
                     "type": "string",
-					"format": "uri"
+                    "format": "uri"
                 }
             }
         },
