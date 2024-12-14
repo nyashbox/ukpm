@@ -1,0 +1,20 @@
+{
+	"syntax": "1",
+
+	"manifest": { 
+		"package-type": "source",
+		"maintainers": [
+			{
+				"maintainer": "test",
+				"mail": "test@localhost"
+			}
+		],
+		"homepage": "https://kernel.org"
+	},
+
+	"kernel": { 
+		"platform": "linux",
+		"flavor": "vanilla",
+		"version": "6.12.4"
+	}
+}
