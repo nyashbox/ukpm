@@ -9,11 +9,17 @@
 using ukpm::core::ArchiveFile;
 using ukpm::core::PackageArchive;
 
+// test data
+const auto ARCHIVE_GOOD = "data/core/archive/archive";
+const auto ARCHIVE_MISSING = "data/core/archive/missing";
+
+const auto TARGET_FILE = "data.txt";
+
 TEST(Archive, open) {
-    EXPECT_ANY_THROW(PackageArchive("data/core/missing.tar.zstd"))
+    EXPECT_ANY_THROW(PackageArchive{ARCHIVE_GOOD})
         << "Trying to open archive with incorrect path MUST throw exception";
 
-    EXPECT_NO_THROW(PackageArchive("data/core/archive.tar.zstd"))
+    EXPECT_NO_THROW(PackageArchive{ARCHIVE_GOOD})
         << "Opening archive with correct path MUST NOT throw exception";
 }
 
@@ -23,13 +29,13 @@ TEST(Archive, read) {
     ArchiveFile expectedFile{'t', 'e', 's', 't', 't', 'e', 's',
                              't', 't', 'e', 's', 't', '\n'};
 
-    EXPECT_ANY_THROW(archive.read("data.txt"))
+    EXPECT_ANY_THROW(archive.read(TARGET_FILE))
         << "Reading file from unopened archive MUST throw exception";
 
-    EXPECT_NO_THROW(archive.open("data/core/archive.tar.zstd"))
+    EXPECT_NO_THROW(archive.open(ARCHIVE_GOOD))
         << "[SANITY CHECK] Archive opening MUST NOT fail before reading file";
 
-    EXPECT_NO_THROW((actualFile = archive.read("data.txt")))
+    EXPECT_NO_THROW((actualFile = archive.read(TARGET_FILE)))
         << "Reading file that is in archive MUST NOT throw exception";
 
     // check if data was read correctly
@@ -40,6 +46,6 @@ TEST(Archive, close) {
     EXPECT_ANY_THROW(PackageArchive().close())
         << "Closing archive that WASN'T previously opened MUST throw exception";
 
-    EXPECT_NO_THROW(PackageArchive("data/core/archive.tar.zstd").close())
+    EXPECT_NO_THROW(PackageArchive(ARCHIVE_GOOD).close())
         << "Closing opened archive MUST NOT throw exception";
 }
