@@ -14,7 +14,7 @@
 namespace ukpm {
 namespace core {
 
-using ArchiveFile = std::vector<unsigned char>;
+using ArchiveFile = std::vector<char>;
 
 class PackageArchive {
   public:
