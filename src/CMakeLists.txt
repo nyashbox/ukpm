@@ -6,6 +6,8 @@
 set(UKPM_SOURCES
     core/archive.cc
 
+    manifest/package_info.cc
+
     package/binary_package.cc
     package/source_package.cc
 )
