@@ -16,7 +16,7 @@ const auto ARCHIVE_MISSING = "data/core/archive/missing";
 const auto TARGET_FILE = "data.txt";
 
 TEST(Archive, open) {
-    EXPECT_ANY_THROW(PackageArchive{ARCHIVE_GOOD})
+    EXPECT_ANY_THROW(PackageArchive{ARCHIVE_MISSING})
         << "Trying to open archive with incorrect path MUST throw exception";
 
     EXPECT_NO_THROW(PackageArchive{ARCHIVE_GOOD})
