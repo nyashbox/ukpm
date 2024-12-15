@@ -23,6 +23,9 @@ class PackageArchive {
 
     ~PackageArchive();
 
+    [[nodiscard]]
+    const struct archive &archive(void) const;
+
     void open(const std::filesystem::path &path);
     void close();
 

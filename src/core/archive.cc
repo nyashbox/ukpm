@@ -24,6 +24,8 @@ PackageArchive::PackageArchive(const std::filesystem::path &path)
     open(path);
 }
 
+const struct archive &PackageArchive::archive() const { return *_archive; };
+
 void PackageArchive::open(const std::filesystem::path &path) {
     // mark archive as 'open'
     _isOpen = true;
