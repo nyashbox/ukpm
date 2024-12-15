@@ -1,0 +1,47 @@
+#include "manifest/manifest_base.h"
+
+#include <jsoncons_ext/jsonschema/json_schema.hpp>
+#include <jsoncons_ext/jsonschema/json_schema_factory.hpp>
+
+#include <fstream>
+
+namespace ukpm {
+namespace manifest {
+
+void ManifestBase::read(const std::string &file) {
+    std::ifstream fileStream(file);
+
+    if (!fileStream)
+        throw std::runtime_error("failed to open manifest file");
+
+    try {
+        _data = json::parse(fileStream);
+    } catch (...) {
+        throw;
+    }
+};
+
+void ManifestBase::_validate(const std::string &schema) {
+    auto JSONSchema = json::parse(schema);
+    auto compiledSchema = jsoncons::jsonschema::make_json_schema(JSONSchema);
+
+    try {
+        compiledSchema.validate(_data);
+    } catch (...) {
+        throw;
+    }
+};
+
+void ManifestBase::_read(PackageArchive &archive, const std::string &filename) {
+    try {
+        auto file = archive.read(filename);
+        _data = json::parse(file);
+    } catch (...) {
+        throw;
+    }
+};
+
+const json &ManifestBase::data(void) const { return _data; };
+
+} // namespace manifest
+} // namespace ukpm

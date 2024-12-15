@@ -6,31 +6,27 @@
 #include "core/archive.h"
 #include "manifest/manifest_base.h"
 
-#include <jsoncons/json.hpp>
-
 #include <filesystem>
 
 using ukpm::core::PackageArchive;
-
-using jsoncons::json;
 
 namespace ukpm {
 namespace manifest {
 
 class PackageInfo final : public ManifestBase {
   public:
+    using ManifestBase::read;
+
     PackageInfo() = default;
     PackageInfo(const std::filesystem::path &file);
     PackageInfo(PackageArchive &archive);
 
-    void read(const std::filesystem::path &file);
-    void read(PackageArchive &archive);
+    virtual void read(PackageArchive &archive) override;
 
     virtual void validate(void) override;
 
   protected:
   private:
-    json _data;
 };
 
 } // namespace manifest

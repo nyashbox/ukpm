@@ -1,9 +1,7 @@
 #include "manifest/package_info.h"
-
-#include <jsoncons_ext/jsonschema/json_schema.hpp>
+#include "manifest/manifest_base.h"
 
 #include <fstream>
-#include <jsoncons_ext/jsonschema/json_schema_factory.hpp>
 
 // manifest filename
 const std::string MANIFEST_NAME = "@PKGINFO";
@@ -74,40 +72,11 @@ namespace manifest {
 PackageInfo::PackageInfo(const std::filesystem::path &file) { read(file); }
 PackageInfo::PackageInfo(PackageArchive &archive) { read(archive); };
 
-void PackageInfo::read(const std::filesystem::path &file) {
-    std::ifstream fileStream(file);
-
-    if (!fileStream)
-        throw std::runtime_error("failed to open package info file");
-
-    try {
-        _data = json::parse(fileStream);
-    } catch (...) {
-        throw;
-    }
-};
-
 void PackageInfo::read(PackageArchive &archive) {
-    auto file = archive.read(MANIFEST_NAME);
-
-    try {
-        _data = json::parse(file);
-    } catch (...) {
-        throw;
-    }
+    _read(archive, MANIFEST_NAME);
 };
 
-void PackageInfo::validate(void) {
-    auto schema = json::parse(JSON_SCHEMA);
-    auto compiledSchema =
-        jsoncons::jsonschema::make_json_schema(std::move(schema));
-
-    try {
-        compiledSchema.validate(_data);
-    } catch (...) {
-        throw;
-    }
-};
+void PackageInfo::validate(void) { _validate(JSON_SCHEMA); };
 
 } // namespace manifest
 } // namespace ukpm
