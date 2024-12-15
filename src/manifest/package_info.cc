@@ -1,3 +1,7 @@
+
+// SPDX-License-Identifier: Apache-2.0
+// Copyright (c) 2024 nyashbox and Contributors
+
 #include "manifest/package_info.h"
 #include "manifest/manifest_base.h"
 

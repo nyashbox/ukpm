@@ -1,3 +1,7 @@
+
+// SPDX-License-Identifier: Apache-2.0
+// Copyright (c) 2024 nyashbox and Contributors
+
 #ifndef UKPM_MANIFEST_PACKAGE_INFO_H_
 #define UKPM_MANIFEST_PACKAGE_INFO_H_
 
