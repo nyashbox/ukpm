@@ -22,8 +22,8 @@ void ManifestBase::read(const std::string &file) {
 };
 
 void ManifestBase::_validate(const std::string &schema) {
-    auto JSONSchema = json::parse(schema);
-    auto compiledSchema = jsoncons::jsonschema::make_json_schema(JSONSchema);
+    auto jsonSchema = json::parse(schema);
+    auto compiledSchema = jsoncons::jsonschema::make_json_schema(jsonSchema);
 
     try {
         compiledSchema.validate(_data);
