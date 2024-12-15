@@ -79,8 +79,9 @@ void PackageArchive::close(void) {
 
 PackageArchive::~PackageArchive() {
     // don't close unopened archive
-    if (_isOpen)
-        close();
+    if (_archive != nullptr) {
+        archive_read_free(_archive);
+    }
 };
 
 } // namespace core
