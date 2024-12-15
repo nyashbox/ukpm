@@ -21,9 +21,9 @@ class PackageInfo final : public ManifestBase {
     PackageInfo(const std::filesystem::path &file);
     PackageInfo(PackageArchive &archive);
 
-    virtual void read(PackageArchive &archive) override;
+    void read(PackageArchive &archive) override;
 
-    virtual void validate(void) override;
+    void validate(void) override;
 
   protected:
   private:
