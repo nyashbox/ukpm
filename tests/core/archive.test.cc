@@ -26,8 +26,8 @@ TEST(Archive, open) {
 TEST(Archive, read) {
     PackageArchive archive;
     ArchiveFile actualFile;
-    ArchiveFile expectedFile{'t', 'e', 's', 't', 't', 'e', 's',
-                             't', 't', 'e', 's', 't', '\n'};
+    const ArchiveFile expectedFile{'t', 'e', 's', 't', 't', 'e', 's',
+                                   't', 't', 'e', 's', 't', '\n'};
 
     EXPECT_ANY_THROW(archive.read(TARGET_FILE))
         << "Reading file from unopened archive MUST throw exception";
