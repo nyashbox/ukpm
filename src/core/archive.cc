@@ -7,6 +7,8 @@
 #include <archive.h>
 #include <archive_entry.h>
 
+const size_t BLOCK_SIZE = 10240;
+
 namespace ukpm {
 namespace core {
 
@@ -25,7 +27,7 @@ PackageArchive::PackageArchive(const std::filesystem::path &path)
 void PackageArchive::open(const std::filesystem::path &path) {
     // mark archive as 'open'
     _isOpen = true;
-    auto res = archive_read_open_filename(_archive, path.c_str(), 10240);
+    auto res = archive_read_open_filename(_archive, path.c_str(), BLOCK_SIZE);
 
     if (res != ARCHIVE_OK)
         throw std::runtime_error(archive_error_string(_archive));
