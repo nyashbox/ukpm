@@ -10,7 +10,7 @@
 namespace ukpm {
 namespace core {
 
-PackageArchive::PackageArchive() : _isOpen(false) {
+PackageArchive::PackageArchive() {
     _archive = archive_read_new();
 
     archive_read_support_format_tar(_archive);
