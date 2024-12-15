@@ -18,6 +18,7 @@ namespace manifest {
 
 class ManifestBase {
   public:
+    [[nodiscard]]
     const json &data(void) const;
 
     virtual void read(const std::string &file);
