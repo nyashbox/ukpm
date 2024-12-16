@@ -1,7 +1,7 @@
 {
 	"syntax": "1",
 
-	"manifest": { 
+	"manifest": {
 		"package-type": "source",
 		"maintainers": [
 			{
@@ -12,7 +12,7 @@
 		"homepage": "https://kernel.org"
 	},
 
-	"kernel": { 
+	"kernel": {
 		"platform": "linux",
 		"flavor": "vanilla",
 		"version": "6.12.4"

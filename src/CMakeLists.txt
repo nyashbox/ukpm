@@ -1,5 +1,5 @@
 
-# SPDX-License-Identifier: Apache-2.0 
+# SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2024 nyashbox and Contributors
 
 # application sources
@@ -19,9 +19,9 @@ find_package(jsoncons REQUIRED)
 add_library(libukpm OBJECT ${UKPM_SOURCES})
 add_library(ukpm::ukpm ALIAS libukpm)
 
-target_link_libraries(libukpm 
+target_link_libraries(libukpm
     PUBLIC
-        LibArchive::LibArchive 
+        LibArchive::LibArchive
         jsoncons
 )
 
@@ -30,7 +30,7 @@ target_include_directories(libukpm
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
-target_precompile_headers(libukpm 
+target_precompile_headers(libukpm
     PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/pch.h)
 

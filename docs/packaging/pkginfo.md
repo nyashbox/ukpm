@@ -90,4 +90,3 @@ Example: https://kernel.org
 **Type:** string
 **Checked:** no
 Can have any format
-

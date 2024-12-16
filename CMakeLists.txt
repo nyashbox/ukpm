@@ -1,5 +1,5 @@
 
-# SPDX-License-Identifier: Apache-2.0 
+# SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2024 nyashbox and Contributors
 
 cmake_minimum_required(VERSION 3.15.0)
