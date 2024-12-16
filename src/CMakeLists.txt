@@ -29,9 +29,14 @@ target_include_directories(libukpm
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
+
 target_precompile_headers(libukpm 
     PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/pch.h)
+
+if(UKPM_ENABLE_ASAN)
+    ukpm_target_enable_asan(libukpm)
+endif()
 
 add_executable(ukpm ukpm.cc)
 target_link_libraries(ukpm PUBLIC ukpm::ukpm)

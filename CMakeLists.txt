@@ -10,8 +10,11 @@ project(ukpm
         VERSION 0.1.0
         LANGUAGES CXX)
 
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 # includes
 include(CTest)
+include(Sanitizers)
 
 # c++ options
 set(CMAKE_CXX_STANDARD 17)
@@ -20,6 +23,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # build options
 option(UKPM_ENABLE_TESTS "Build application tests" ON)
+option(UKPM_ENABLE_ASAN  "Build with address sanitizer" OFF)
 
 # subdirectories
 add_subdirectory(src)

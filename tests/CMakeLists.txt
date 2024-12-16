@@ -30,6 +30,10 @@ target_link_libraries(ukpm_testrunner
         ukpm::ukpm
 )
 
+if(UKPM_ENABLE_ASAN)
+    ukpm_target_enable_asan(ukpm_testrunner)
+endif()
+
 # discover tests
 gtest_discover_tests(ukpm_testrunner
     WORKING_DIRECTORY
