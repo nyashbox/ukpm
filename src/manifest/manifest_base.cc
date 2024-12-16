@@ -4,11 +4,6 @@
 
 #include "manifest/manifest_base.h"
 
-#include <jsoncons_ext/jsonschema/json_schema.hpp>
-#include <jsoncons_ext/jsonschema/json_schema_factory.hpp>
-
-#include <fstream>
-
 namespace ukpm {
 namespace manifest {
 

@@ -5,8 +5,6 @@
 #include "manifest/package_info.h"
 #include "manifest/manifest_base.h"
 
-#include <fstream>
-
 // manifest filename
 const std::string MANIFEST_NAME = "@PKGINFO";
 
