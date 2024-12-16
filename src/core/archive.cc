@@ -3,6 +3,7 @@
 // Copyright (c) 2024 nyashbox and Contributors
 
 #include "core/archive.h"
+#include "core/exception.h"
 
 #include <archive.h>
 #include <archive_entry.h>
@@ -32,14 +33,16 @@ void PackageArchive::open(const std::filesystem::path &path) {
     auto res = archive_read_open_filename(_archive, path.c_str(), BLOCK_SIZE);
 
     if (res != ARCHIVE_OK)
-        throw std::runtime_error(archive_error_string(_archive));
+        throw ukpm::ArchiveException("Failed to open archive: ",
+                                     archive_error_string(_archive));
 }
 
 ArchiveFile PackageArchive::read(const std::string &file) {
 
     // check if archive is open
     if (not _isOpen)
-        throw std::runtime_error("Archive should be open before using");
+        throw ukpm::ArchiveException("Failed to read from archive: archive "
+                                     "should be open before reading!");
 
     struct archive_entry *entry;
     ArchiveFile archiveFile;
@@ -63,14 +66,15 @@ ArchiveFile PackageArchive::read(const std::string &file) {
     }
 
     // throw exception if file is not in archive
-    throw std::runtime_error("file not found!");
+    throw ukpm::ArchiveException(
+        "Failed to read from archive: file not found!");
 }
 
 void PackageArchive::close(void) {
     // check if archive is open
     if (not _isOpen)
-        throw std::runtime_error(
-            "can't close archive that wasn't opened previously");
+        throw ukpm::ArchiveException(
+            "Failed to close archive: archive should be open before closing!");
 
     // close archive and deallocate memory
     archive_read_close(_archive);
