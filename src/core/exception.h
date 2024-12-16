@@ -22,6 +22,19 @@ class Exception : public std::exception {
     std::string _message;
 };
 
+class ArchiveException : public ukpm::Exception {
+  public:
+    explicit ArchiveException(const std::string &message)
+        : Exception(message) {};
+
+    explicit ArchiveException(const std::string &message,
+                              const std::string &description)
+        : Exception(message + description) {};
+
+  protected:
+  private:
+};
+
 } // namespace ukpm
 
 #endif // UKPM_CORE_EXCEPTION_H_
