@@ -12,6 +12,7 @@ set(UKPM_TEST_SOURCES
     core/archive.test.cc
 
     manifest/package_info.test.cc
+    manifest/package_build.test.cc
 
     package/binary_package.test.cc
     package/source_package.test.cc

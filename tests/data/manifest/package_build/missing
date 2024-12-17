@@ -1,0 +1,13 @@
+{
+	"source": {
+		"url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.5.tar.xz",
+		"sha256": "39207fce1ce42838e085261bae0af5ce4a0843aa777cfc0f5c49bc7729602bcd"
+	},
+
+	"patches": [
+		{
+			"file": "patches/0000-test.patch",
+			"description": "test patch"
+		}
+	]
+}
